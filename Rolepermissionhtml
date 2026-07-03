@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Role & Permission | PROCURESYS</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="role-permission.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+        </div>
+
+        <div>
+
+            <h2>PROCURESYS</h2>
+
+            <p>Procurement Platform</p>
+
+        </div>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <a href="#">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-users"></i>
+            User Management
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            User Activity
+        </a>
+
+        <a class="active" href="#">
+            <i class="fa-solid fa-user-shield"></i>
+            Role & Permission
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-truck"></i>
+            Vendor History
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-file-contract"></i>
+            RFQ Management
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            Inventory
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-chart-pie"></i>
+            Analytics
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-file-lines"></i>
+            Reports
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="#">
+            <i class="fa-solid fa-circle-question"></i>
+            Help Center
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+        <button class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+<header class="top-header">
+
+    <div class="header-left">
+
+        <h3>Welcome Back 👋</h3>
+
+        <p>Role & Permission Management</p>
+
+    </div>
+
+    <div class="header-right">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input
+                type="text"
+                placeholder="Search roles...">
+
+        </div>
+
+        <button class="icon-btn">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <button class="icon-btn">
+
+            <i class="fa-regular fa-envelope"></i>
+
+        </button>
+
+        <div class="profile">
+
+            <img src="https://i.pravatar.cc/45" alt="Admin">
+
+            <div>
+
+                <h4>Administrator</h4>
+
+                <span>System Admin</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<section class="page-content">
+
+<div class="breadcrumb">
+
+Dashboard
+
+<span>/</span>
+
+Administration
+
+<span>/</span>
+
+Role & Permission
+
+</div>
+
+<!-- ================= PAGE HEADER ================= -->
+
+<div class="page-header">
+
+<div>
+
+<h1>Role & Permission Management</h1>
+
+<p>
+
+Create roles, assign permissions, and control user access
+across the PROCURESYS procurement platform.
+
+</p>
+
+</div>
+
+<div class="page-actions">
+
+<button class="filter-btn">
+
+<i class="fa-solid fa-filter"></i>
+
+Filter
+
+</button>
+
+<button class="add-btn">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Role
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= KPI CARDS ================= -->
+
+<div class="kpi-grid">
+
+<div class="kpi-card">
+
+<div class="kpi-icon blue">
+
+<i class="fa-solid fa-user-shield"></i>
+
+</div>
+
+<div>
+
+<h5>Total Roles</h5>
+
+<h2>08</h2>
+
+<p>Configured Roles</p>
+
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-icon green">
+
+<i class="fa-solid fa-users"></i>
+
+</div>
+
+<div>
+
+<h5>Total Users</h5>
+
+<h2>248</h2>
+
+<p>Assigned Users</p>
+
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-icon orange">
+
+<i class="fa-solid fa-lock"></i>
+
+</div>
+
+<div>
+
+<h5>Permissions</h5>
+
+<h2>36</h2>
+
+<p>System Permissions</p>
+
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-icon purple">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+</div>
+
+<div>
+
+<h5>Active Roles</h5>
+
+<h2>07</h2>
+
+<p>Enabled</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= ROLE TABLE STARTS HERE ================= -->
+<!-- ================= ROLE MANAGEMENT CARD ================= -->
+
+<div class="table-card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h2>Role Management</h2>
+
+            <p>Manage system roles and permission assignments.</p>
+
+        </div>
+
+        <div class="card-actions">
+
+            <button class="refresh-btn">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+            <button class="more-btn">
+
+                <i class="fa-solid fa-ellipsis"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table id="roleTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Role ID</th>
+
+                    <th>Role Name</th>
+
+                    <th>Description</th>
+
+                    <th>Assigned Users</th>
+
+                    <th>Permissions</th>
+
+                    <th>Status</th>
+
+                    <th>Created Date</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>ROL001</td>
+
+                    <td>
+
+                        <div class="role-info">
+
+                            <div class="role-icon admin">
+
+                                <i class="fa-solid fa-user-shield"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Administrator</h4>
+
+                                <span>System Administrator</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Full access to all procurement modules</td>
+
+                    <td>05</td>
+
+                    <td>36</td>
+
+                    <td>
+
+                        <span class="status active">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                    <td>12 Jan 2026</td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button class="view-btn">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                            <button class="edit-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ROL002</td>
+
+                    <td>
+
+                        <div class="role-info">
+
+                            <div class="role-icon manager">
+
+                                <i class="fa-solid fa-briefcase"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Procurement Manager</h4>
+
+                                <span>Department Head</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Manage vendors, RFQs and approvals</td>
+
+                    <td>12</td>
+
+                    <td>28</td>
+
+                    <td>
+
+                        <span class="status active">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                    <td>18 Jan 2026</td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button class="view-btn">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                            <button class="edit-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ROL003</td>
+
+                    <td>
+
+                        <div class="role-info">
+
+                            <div class="role-icon inventory">
+
+                                <i class="fa-solid fa-boxes-stacked"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Inventory Officer</h4>
+
+                                <span>Warehouse Team</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Inventory monitoring and stock updates</td>
+
+                    <td>18</td>
+
+                    <td>18</td>
+
+                    <td>
+
+                        <span class="status active">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                    <td>26 Jan 2026</td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button class="view-btn">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                            <button class="edit-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ROL004</td>
+
+                    <td>
+
+                        <div class="role-info">
+
+                            <div class="role-icon supplier">
+
+                                <i class="fa-solid fa-truck"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Supplier</h4>
+
+                                <span>External Vendor</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Submit quotations and view purchase orders</td>
+
+                    <td>72</td>
+
+                    <td>10</td>
+
+                    <td>
+
+                        <span class="status inactive">
+
+                            Inactive
+
+                        </span>
+
+                    </td>
+
+                    <td>05 Feb 2026</td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button class="view-btn">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                            <button class="edit-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ROL005</td>
+
+                    <td>
+
+                        <div class="role-info">
+
+                            <div class="role-icon finance">
+
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>Finance Executive</h4>
+
+                                <span>Accounts Department</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Invoice verification and payment approval</td>
+
+                    <td>09</td>
+
+                    <td>20</td>
+
+                    <td>
+
+                        <span class="status active">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                    <td>14 Feb 2026</td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button class="view-btn">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                            <button class="edit-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="delete-btn">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="table-footer">
+
+        <div class="entries">
+
+            Showing
+
+            <strong>1–5</strong>
+
+            of
+
+            <strong>8</strong>
+
+            Roles
+
+        </div>
+
+        <div class="pagination">
+
+            <button>
+
+                <i class="fa-solid fa-angle-left"></i>
+
+            </button>
+
+            <button class="active-page">1</button>
+
+            <button>2</button>
+
+            <button>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= PERMISSION MATRIX STARTS HERE ================= -->
+<!-- ================= PERMISSION MATRIX STARTS HERE ================= -->
