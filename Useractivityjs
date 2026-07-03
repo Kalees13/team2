@@ -1,0 +1,608 @@
+/* ==========================================
+   USER ACTIVITY DASHBOARD - PART 1
+========================================== */
+
+/* ---------- DOM ELEMENTS ---------- */
+
+const tableBody = document.querySelector("#activityTable tbody");
+const searchInput = document.querySelector(".search-box input");
+const refreshBtn = document.querySelector(".refresh-btn");
+const exportBtn = document.querySelector(".export-btn");
+
+const activityModal = document.getElementById("activityModal");
+const closeModalBtn = document.getElementById("closeModal");
+const closeActivityBtn = document.getElementById("closeActivity");
+
+const toast = document.getElementById("toast");
+
+/* ---------- SAMPLE DATA ---------- */
+
+let activities = [
+
+{
+    id:"ACT001",
+    user:"John Doe",
+    email:"john@procuresys.com",
+    role:"Administrator",
+    action:"Logged In",
+    module:"Authentication",
+    ip:"192.168.1.10",
+    datetime:"04 Jul 2026 09:10 AM",
+    status:"Success"
+},
+
+{
+    id:"ACT002",
+    user:"Sophia Miller",
+    email:"sophia@procuresys.com",
+    role:"Procurement Manager",
+    action:"Created RFQ",
+    module:"RFQ Management",
+    ip:"192.168.1.14",
+    datetime:"04 Jul 2026 09:45 AM",
+    status:"Completed"
+},
+
+{
+    id:"ACT003",
+    user:"David Johnson",
+    email:"david@vendor.com",
+    role:"Supplier",
+    action:"Uploaded Quotation",
+    module:"Supplier Portal",
+    ip:"172.16.20.15",
+    datetime:"04 Jul 2026 10:20 AM",
+    status:"Pending"
+},
+
+{
+    id:"ACT004",
+    user:"Emma Wilson",
+    email:"emma@procuresys.com",
+    role:"Inventory Officer",
+    action:"Updated Stock",
+    module:"Inventory",
+    ip:"192.168.10.45",
+    datetime:"04 Jul 2026 11:30 AM",
+    status:"Success"
+},
+
+{
+    id:"ACT005",
+    user:"Michael Brown",
+    email:"michael@procuresys.com",
+    role:"Finance Executive",
+    action:"Approved Invoice",
+    module:"Finance",
+    ip:"192.168.5.30",
+    datetime:"04 Jul 2026 12:15 PM",
+    status:"Completed"
+}
+
+];
+
+/* ---------- RENDER TABLE ---------- */
+
+function renderTable(data = activities){
+
+    tableBody.innerHTML = "";
+
+    data.forEach((activity,index)=>{
+
+        let statusClass = "success";
+
+        if(activity.status === "Pending"){
+
+            statusClass = "pending";
+
+        }
+
+        if(activity.status === "Failed"){
+
+            statusClass = "failed";
+
+        }
+
+        tableBody.innerHTML += `
+
+        <tr>
+
+            <td>${activity.id}</td>
+
+            <td>
+
+                <div class="user-info">
+
+                    <img src="https://i.pravatar.cc/40?img=${index+15}" alt="User">
+
+                    <div>
+
+                        <h4>${activity.user}</h4>
+
+                        <span>${activity.email}</span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+            <td>${activity.role}</td>
+
+            <td>${activity.action}</td>
+
+            <td>${activity.module}</td>
+
+            <td>${activity.ip}</td>
+
+            <td>${activity.datetime}</td>
+
+            <td>
+
+                <span class="status ${statusClass}">
+
+                    ${activity.status}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    class="view-btn"
+                    data-index="${index}">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+/* ---------- INITIAL LOAD ---------- */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    renderTable();
+
+});
+/* ==========================================
+   USER ACTIVITY DASHBOARD - PART 2
+========================================== */
+
+/* ---------- LIVE SEARCH ---------- */
+
+searchInput.addEventListener("keyup", function () {
+
+    const keyword = this.value.toLowerCase();
+
+    const filteredActivities = activities.filter(activity => {
+
+        return (
+
+            activity.id.toLowerCase().includes(keyword) ||
+
+            activity.user.toLowerCase().includes(keyword) ||
+
+            activity.email.toLowerCase().includes(keyword) ||
+
+            activity.role.toLowerCase().includes(keyword) ||
+
+            activity.action.toLowerCase().includes(keyword) ||
+
+            activity.module.toLowerCase().includes(keyword) ||
+
+            activity.status.toLowerCase().includes(keyword)
+
+        );
+
+    });
+
+    renderTable(filteredActivities);
+
+});
+
+
+/* ---------- REFRESH BUTTON ---------- */
+
+refreshBtn.addEventListener("click", () => {
+
+    searchInput.value = "";
+
+    renderTable();
+
+    showToast("Activity log refreshed successfully.");
+
+});
+
+
+/* ---------- EXPORT CSV ---------- */
+
+exportBtn.addEventListener("click", () => {
+
+    let csv = "Activity ID,User,Email,Role,Action,Module,IP Address,Date & Time,Status\n";
+
+    activities.forEach(activity => {
+
+        csv += `${activity.id},${activity.user},${activity.email},${activity.role},${activity.action},${activity.module},${activity.ip},${activity.datetime},${activity.status}\n`;
+
+    });
+
+    const blob = new Blob([csv], {
+
+        type: "text/csv"
+
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download = "User_Activity_Report.csv";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+
+    showToast("Activity report exported successfully.");
+
+});
+
+
+/* ---------- TOAST ---------- */
+
+function showToast(message) {
+
+    toast.querySelector("span").textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+/* ==========================================
+   USER ACTIVITY DASHBOARD - PART 3
+========================================== */
+
+/* ---------- MODAL DETAIL ELEMENTS ---------- */
+
+const activityId = document.getElementById("activityId");
+const activityUser = document.getElementById("activityUser");
+const activityEmail = document.getElementById("activityEmail");
+const activityRole = document.getElementById("activityRole");
+const activityModule = document.getElementById("activityModule");
+const activityAction = document.getElementById("activityAction");
+const activityTime = document.getElementById("activityTime");
+const activityIP = document.getElementById("activityIP");
+
+const deleteModal = document.getElementById("deleteModal");
+const cancelDelete = document.getElementById("cancelDelete");
+const confirmDelete = document.getElementById("confirmDelete");
+
+let selectedIndex = null;
+
+/* ---------- VIEW ACTIVITY DETAILS ---------- */
+
+document.addEventListener("click", function (e) {
+
+    const viewBtn = e.target.closest(".view-btn");
+
+    if (!viewBtn) return;
+
+    selectedIndex = Number(viewBtn.dataset.index);
+
+    const activity = activities[selectedIndex];
+
+    activityId.textContent = activity.id;
+    activityUser.textContent = activity.user;
+    activityEmail.textContent = activity.email;
+    activityRole.textContent = activity.role;
+    activityModule.textContent = activity.module;
+    activityAction.textContent = activity.action;
+    activityTime.textContent = activity.datetime;
+    activityIP.textContent = activity.ip;
+
+    activityModal.classList.add("active");
+
+});
+
+
+/* ---------- CLOSE ACTIVITY MODAL ---------- */
+
+function closeActivityModal(){
+
+    activityModal.classList.remove("active");
+
+}
+
+closeModalBtn.addEventListener("click", closeActivityModal);
+
+closeActivityBtn.addEventListener("click", closeActivityModal);
+
+
+/* ---------- CLICK OUTSIDE TO CLOSE ---------- */
+
+window.addEventListener("click", function(e){
+
+    if(e.target === activityModal){
+
+        closeActivityModal();
+
+    }
+
+    if(e.target === deleteModal){
+
+        deleteModal.classList.remove("active");
+
+    }
+
+});
+
+
+/* ---------- DELETE ACTIVITY ---------- */
+
+/*
+Add this button inside the Details Modal
+if you want to allow deletion:
+
+<button id="openDeleteModal"
+class="confirm-delete">
+Delete Activity
+</button>
+
+*/
+
+const openDeleteBtn = document.getElementById("openDeleteModal");
+
+if(openDeleteBtn){
+
+    openDeleteBtn.addEventListener("click",()=>{
+
+        deleteModal.classList.add("active");
+
+    });
+
+}
+
+
+/* ---------- CANCEL DELETE ---------- */
+
+cancelDelete.addEventListener("click",()=>{
+
+    deleteModal.classList.remove("active");
+
+});
+
+
+/* ---------- CONFIRM DELETE ---------- */
+
+confirmDelete.addEventListener("click",()=>{
+
+    if(selectedIndex!==null){
+
+        activities.splice(selectedIndex,1);
+
+        renderTable();
+
+        deleteModal.classList.remove("active");
+
+        activityModal.classList.remove("active");
+
+        showToast("Activity deleted successfully.");
+
+        selectedIndex=null;
+
+    }
+
+});
+/* ==========================================
+   USER ACTIVITY DASHBOARD - PART 4
+========================================== */
+
+/* ---------- PAGINATION ---------- */
+
+const rowsPerPage = 5;
+
+let currentPage = 1;
+
+/* Render table with pagination */
+
+function renderPaginatedTable(data = activities){
+
+    tableBody.innerHTML = "";
+
+    const start = (currentPage - 1) * rowsPerPage;
+
+    const end = start + rowsPerPage;
+
+    const pageData = data.slice(start, end);
+
+    pageData.forEach((activity,index)=>{
+
+        let statusClass = "success";
+
+        if(activity.status==="Pending"){
+
+            statusClass="pending";
+
+        }
+
+        if(activity.status==="Failed"){
+
+            statusClass="failed";
+
+        }
+
+        tableBody.innerHTML += `
+
+        <tr>
+
+            <td>${activity.id}</td>
+
+            <td>
+
+                <div class="user-info">
+
+                    <img src="https://i.pravatar.cc/40?img=${index+20}">
+
+                    <div>
+
+                        <h4>${activity.user}</h4>
+
+                        <span>${activity.email}</span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+            <td>${activity.role}</td>
+
+            <td>${activity.action}</td>
+
+            <td>${activity.module}</td>
+
+            <td>${activity.ip}</td>
+
+            <td>${activity.datetime}</td>
+
+            <td>
+
+                <span class="status ${statusClass}">
+
+                    ${activity.status}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                class="view-btn"
+                data-index="${start+index}">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+    updatePagination(data.length);
+
+}
+
+/* ---------- UPDATE PAGINATION ---------- */
+
+function updatePagination(totalRows){
+
+    const pageButtons = document.querySelectorAll(".pagination button");
+
+    const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+    pageButtons.forEach(button=>{
+
+        button.classList.remove("active-page");
+
+    });
+
+    pageButtons.forEach(button=>{
+
+        const page = Number(button.textContent);
+
+        if(page===currentPage){
+
+            button.classList.add("active-page");
+
+        }
+
+    });
+
+}
+
+/* ---------- PAGE BUTTON CLICK ---------- */
+
+document.querySelectorAll(".pagination button").forEach(button=>{
+
+    button.addEventListener("click",function(){
+
+        const text=this.textContent.trim();
+
+        if(!isNaN(text)){
+
+            currentPage=Number(text);
+
+            renderPaginatedTable();
+
+        }
+
+    });
+
+});
+
+/* ---------- INITIALIZE ---------- */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    renderPaginatedTable();
+
+});
+
+/* ---------- KEYBOARD ESC CLOSE ---------- */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        activityModal.classList.remove("active");
+
+        deleteModal.classList.remove("active");
+
+    }
+
+});
+
+/* ---------- AUTO REFRESH KPI (Demo) ---------- */
+
+setInterval(()=>{
+
+    const cards=document.querySelectorAll(".kpi-card h2");
+
+    if(cards.length>=4){
+
+        cards[0].textContent=(15000+Math.floor(Math.random()*500)).toLocaleString();
+
+        cards[1].textContent=340+Math.floor(Math.random()*20);
+
+        cards[2].textContent=Math.floor(Math.random()*20);
+
+        cards[3].textContent=180+Math.floor(Math.random()*15);
+
+    }
+
+},10000);
