@@ -1,0 +1,66 @@
+// =============================
+// DOM Elements
+// =============================
+
+const forgotForm = document.getElementById("forgotForm");
+const email = document.getElementById("email");
+const emailError = document.getElementById("emailError");
+const successMessage = document.getElementById("successMessage");
+
+// =============================
+// Email Validation Function
+// =============================
+
+function isValidEmail(emailValue) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(emailValue);
+}
+
+// =============================
+// Form Submit
+// =============================
+
+forgotForm.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    // Clear previous messages
+    emailError.textContent = "";
+    successMessage.textContent = "";
+
+    const emailValue = email.value.trim();
+
+    // Empty validation
+    if (emailValue === "") {
+        emailError.textContent = "Email is required.";
+        email.focus();
+        return;
+    }
+
+    // Email format validation
+    if (!isValidEmail(emailValue)) {
+        emailError.textContent = "Please enter a valid email address.";
+        email.focus();
+        return;
+    }
+
+    // Success message
+    successMessage.textContent = "Password reset link sent successfully!";
+
+    // Disable button to prevent multiple clicks
+    const button = document.querySelector(".reset-btn");
+    button.disabled = true;
+    button.textContent = "Sending...";
+
+    // Redirect after 2 seconds
+    setTimeout(() => {
+
+        // If using OTP page:
+        // window.location.href = "verify-otp.html";
+
+        // Directly go to Reset Password page
+        window.location.href = "reset-password.html";
+
+    }, 2000);
+
+});
