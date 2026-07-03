@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Activity Dashboard | PROCURESYS</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="user-activity.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            <i class="fa-solid fa-layer-group"></i>
+
+        </div>
+
+        <div>
+
+            <h2>PROCURESYS</h2>
+
+            <p>Procurement Platform</p>
+
+        </div>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <a href="#">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-users"></i>
+            User Management
+        </a>
+
+        <a class="active" href="#">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            User Activity
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-truck"></i>
+            Vendor History
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-file-contract"></i>
+            RFQ Management
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            Inventory
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-chart-pie"></i>
+            Analytics
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-file-lines"></i>
+            Reports
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="#">
+            <i class="fa-solid fa-circle-question"></i>
+            Help Center
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+        <button class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+<!-- Header -->
+
+<header class="top-header">
+
+    <div class="header-left">
+
+        <h3>Welcome Back 👋</h3>
+
+        <p>User Activity Dashboard</p>
+
+    </div>
+
+    <div class="header-right">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input
+                type="text"
+                placeholder="Search activity...">
+
+        </div>
+
+        <button class="icon-btn">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <button class="icon-btn">
+
+            <i class="fa-regular fa-envelope"></i>
+
+        </button>
+
+        <div class="profile">
+
+            <img src="https://i.pravatar.cc/45" alt="Admin">
+
+            <div>
+
+                <h4>Administrator</h4>
+
+                <span>System Admin</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- Page Content -->
+
+<section class="page-content">
+
+<div class="breadcrumb">
+
+Dashboard
+
+<span>/</span>
+
+Administration
+
+<span>/</span>
+
+User Activity
+
+</div>
+
+<!-- Page Header -->
+
+<div class="page-header">
+
+<div>
+
+<h1>User Activity Dashboard</h1>
+
+<p>
+
+Monitor login history, account actions, user sessions,
+and audit logs across the procurement system.
+
+</p>
+
+</div>
+
+<div class="page-actions">
+
+<button class="filter-btn">
+
+<i class="fa-solid fa-filter"></i>
+
+Filter
+
+</button>
+
+<button class="export-btn">
+
+<i class="fa-solid fa-download"></i>
+
+Export
+
+</button>
+
+</div>
+
+</div>
+
+<!-- KPI Cards -->
+
+<div class="kpi-grid">
+
+<div class="kpi-card">
+
+<div class="kpi-icon blue">
+
+<i class="fa-solid fa-user-check"></i>
+
+</div>
+
+<div>
+
+<h5>Total Activities</h5>
+
+<h2>15,284</h2>
+
+<p>+12% this week</p>
+
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-icon green">
+
+<i class="fa-solid fa-users"></i>
+
+</div>
+
+<div>
+
+<h5>Active Users</h5>
+
+<h2>348</h2>
+
+<p>Currently Online</p>
+
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-icon orange">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+</div>
+
+<div>
+
+<h5>Failed Logins</h5>
+
+<h2>14</h2>
+
+<p>Last 24 Hours</p>
+
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-icon purple">
+
+<i class="fa-solid fa-clock"></i>
+
+</div>
+
+<div>
+
+<h5>Today's Logins</h5>
+
+<h2>186</h2>
+
+<p>+8% Yesterday</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= ACTIVITY TABLE STARTS HERE ================= -->
+<!-- ================= ACTIVITY LOG CARD ================= -->
+
+<div class="table-card">
+
+    <!-- Card Header -->
+
+    <div class="card-header">
+
+        <div>
+
+            <h2>Recent User Activities</h2>
+
+            <p>Real-time audit trail of user actions performed in the system.</p>
+
+        </div>
+
+        <div class="card-actions">
+
+            <button class="refresh-btn">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+            <button class="more-btn">
+
+                <i class="fa-solid fa-ellipsis"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Activity Table -->
+
+    <div class="table-responsive">
+
+        <table id="activityTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Activity ID</th>
+
+                    <th>User</th>
+
+                    <th>Role</th>
+
+                    <th>Action</th>
+
+                    <th>Module</th>
+
+                    <th>IP Address</th>
+
+                    <th>Date & Time</th>
+
+                    <th>Status</th>
+
+                    <th>Details</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>ACT001</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=12">
+
+                            <div>
+
+                                <h4>John Doe</h4>
+
+                                <span>john@procuresys.com</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Administrator</td>
+
+                    <td>Logged In</td>
+
+                    <td>Authentication</td>
+
+                    <td>192.168.1.10</td>
+
+                    <td>04 Jul 2026 09:10 AM</td>
+
+                    <td>
+
+                        <span class="status success">
+
+                            Success
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="view-btn">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ACT002</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=15">
+
+                            <div>
+
+                                <h4>Sophia Miller</h4>
+
+                                <span>sophia@procuresys.com</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Procurement Manager</td>
+
+                    <td>Created RFQ</td>
+
+                    <td>RFQ Management</td>
+
+                    <td>192.168.1.14</td>
+
+                    <td>04 Jul 2026 09:45 AM</td>
+
+                    <td>
+
+                        <span class="status success">
+
+                            Completed
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="view-btn">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ACT003</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=30">
+
+                            <div>
+
+                                <h4>David Johnson</h4>
+
+                                <span>david@vendor.com</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Supplier</td>
+
+                    <td>Uploaded Quotation</td>
+
+                    <td>Supplier Portal</td>
+
+                    <td>172.16.20.15</td>
+
+                    <td>04 Jul 2026 10:20 AM</td>
+
+                    <td>
+
+                        <span class="status pending">
+
+                            Pending Review
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="view-btn">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ACT004</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=41">
+
+                            <div>
+
+                                <h4>Emma Wilson</h4>
+
+                                <span>emma@procuresys.com</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Inventory Officer</td>
+
+                    <td>Updated Stock</td>
+
+                    <td>Inventory</td>
+
+                    <td>192.168.10.45</td>
+
+                    <td>04 Jul 2026 11:30 AM</td>
+
+                    <td>
+
+                        <span class="status success">
+
+                            Success
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="view-btn">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>ACT005</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=18">
+
+                            <div>
+
+                                <h4>Michael Brown</h4>
+
+                                <span>michael@procuresys.com</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>Finance Executive</td>
+
+                    <td>Approved Invoice</td>
+
+                    <td>Finance</td>
+
+                    <td>192.168.5.30</td>
+
+                    <td>04 Jul 2026 12:15 PM</td>
+
+                    <td>
+
+                        <span class="status success">
+
+                            Approved
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="view-btn">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Pagination -->
+
+    <div class="table-footer">
+
+        <div class="entries">
+
+            Showing
+
+            <strong>1-5</strong>
+
+            of
+
+            <strong>250</strong>
+
+            Activity Records
+
+        </div>
+
+        <div class="pagination">
+
+            <button>
+
+                <i class="fa-solid fa-angle-left"></i>
+
+            </button>
+
+            <button class="active-page">1</button>
+
+            <button>2</button>
+
+            <button>3</button>
+
+            <button>4</button>
+
+            <button>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= END OF ACTIVITY TABLE ================= -->
+<!-- ================= ACTIVITY DETAILS MODAL ================= -->
+
+<div class="modal" id="activityModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Activity Details</h2>
+
+            <button class="close-btn" id="closeModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div class="activity-details">
+
+            <div class="detail-row">
+
+                <span>Activity ID</span>
+
+                <strong id="activityId">ACT001</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>User Name</span>
+
+                <strong id="activityUser">John Doe</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Email</span>
+
+                <strong id="activityEmail">john@procuresys.com</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Role</span>
+
+                <strong id="activityRole">Administrator</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Module</span>
+
+                <strong id="activityModule">Authentication</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Action Performed</span>
+
+                <strong id="activityAction">User Logged In</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Login Time</span>
+
+                <strong id="activityTime">04 Jul 2026 09:10 AM</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>IP Address</span>
+
+                <strong id="activityIP">192.168.1.10</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Device</span>
+
+                <strong>Windows 11 • Chrome 138</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Location</span>
+
+                <strong>Chennai, Tamil Nadu</strong>
+
+            </div>
+
+            <div class="detail-row">
+
+                <span>Status</span>
+
+                <span class="status success">
+
+                    Success
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="close-activity-btn" id="closeActivity">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= DELETE CONFIRMATION ================= -->
+
+<div class="delete-modal" id="deleteModal">
+
+    <div class="delete-box">
+
+        <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+
+        <h2>Delete Activity Record?</h2>
+
+        <p>
+
+            Are you sure you want to permanently delete this activity record?
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="delete-actions">
+
+            <button class="cancel-delete" id="cancelDelete">
+
+                Cancel
+
+            </button>
+
+            <button class="confirm-delete" id="confirmDelete">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= SUCCESS TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span>Operation completed successfully.</span>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- JavaScript -->
+
+<script src="user-activity.js"></script>
+
+</body>
+
+</html>
