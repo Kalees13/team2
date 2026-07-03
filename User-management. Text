@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Management | PROCURESYS</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="user-management.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+
+            <div>
+                <h2>PROCURESYS</h2>
+                <p>Procurement Platform</p>
+            </div>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="sidebar-menu">
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-truck"></i>
+                Vendor History
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-file-contract"></i>
+                RFQ Management
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-scale-balanced"></i>
+                Penalty Module
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                Inventory Dashboard
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-ranking-star"></i>
+                Vendor Performance
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-clock"></i>
+                SLA Monitoring
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-pie"></i>
+                Analytics
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <!-- Bottom Menu -->
+
+        <div class="sidebar-bottom">
+
+            <a href="#">
+                <i class="fa-solid fa-circle-question"></i>
+                Help Center
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <button class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <h3>Welcome Back 👋</h3>
+
+                <p>Procurement Overview</p>
+
+            </div>
+
+
+
+            <div class="header-right">
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search users...">
+
+                </div>
+
+
+                <!-- Icons -->
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-envelope"></i>
+                </button>
+
+
+                <!-- User -->
+
+                <div class="profile">
+
+                    <img src="https://i.pravatar.cc/45"
+                        alt="User">
+
+                    <div>
+
+                        <h4>Admin</h4>
+
+                        <span>Administrator</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+
+        <section class="page-content">
+
+            <!-- Breadcrumb -->
+
+            <div class="breadcrumb">
+
+                Dashboard
+
+                <span>/</span>
+
+                User Management
+
+            </div>
+
+
+            <!-- Page Header -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>User Management</h1>
+
+                    <p>
+                        Manage employees, assign roles,
+                        edit information and control permissions.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Actions -->
+
+                <div class="page-actions">
+
+                    <!-- Search -->
+
+                    <div class="table-search">
+
+                        <i class="fa-solid fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="tableSearch"
+                            placeholder="Search user">
+
+                    </div>
+
+
+                    <!-- Filter -->
+
+                    <button class="filter-btn">
+
+                        <i class="fa-solid fa-filter"></i>
+
+                        Filter
+
+                    </button>
+
+
+                    <!-- Add User -->
+
+                    <button
+                        class="add-user-btn"
+                        id="openModal">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add User
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= USER TABLE STARTS HERE ================= -->
+
+            <!-- Part 1B continues from here -->
