@@ -1,0 +1,327 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#5B6EF5;
+    --primary-dark:#4A5BE6;
+    --background:#F7F8FC;
+    --card:#FFFFFF;
+    --border:#E5E7EB;
+    --text:#111827;
+    --text-light:#6B7280;
+    --success:#10B981;
+    --danger:#EF4444;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+    background:var(--background);
+
+}
+
+/* ===========================
+      PAGE
+=========================== */
+
+.forgot-page{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+
+}
+
+/* ===========================
+      CARD
+=========================== */
+
+.forgot-card{
+
+    width:460px;
+    max-width:100%;
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:40px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+      BACK LINK
+=========================== */
+
+.back-link{
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    display:inline-block;
+
+    margin-bottom:30px;
+
+    transition:.3s;
+
+}
+
+.back-link:hover{
+
+    color:var(--primary-dark);
+
+}
+
+/* ===========================
+      LOGO
+=========================== */
+
+.logo-box{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.logo-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#5B6EF5,#6D5EF6);
+
+    color:#fff;
+
+    font-size:30px;
+    font-weight:700;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+    margin-bottom:18px;
+
+}
+
+.logo-box h1{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.logo-box p{
+
+    margin-top:10px;
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+      FORM
+=========================== */
+
+.form-group{
+
+    margin-bottom:22px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.form-group input{
+
+    width:100%;
+
+    height:50px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:0 16px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.form-group input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(91,110,245,.12);
+
+}
+
+/* ===========================
+      ERROR
+=========================== */
+
+.error{
+
+    display:block;
+
+    color:var(--danger);
+
+    margin-top:6px;
+
+    font-size:13px;
+
+    min-height:18px;
+
+}
+
+/* ===========================
+      BUTTON
+=========================== */
+
+.reset-btn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.reset-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
+      SUCCESS MESSAGE
+=========================== */
+
+.success-message{
+
+    margin-top:20px;
+
+    color:var(--success);
+
+    text-align:center;
+
+    font-weight:600;
+
+    min-height:22px;
+
+}
+
+/* ===========================
+      BOTTOM LINK
+=========================== */
+
+.bottom-link{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+}
+
+.bottom-link a{
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.bottom-link a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:500px){
+
+    .forgot-card{
+
+        padding:30px 22px;
+
+    }
+
+    .logo-box h1{
+
+        font-size:26px;
+
+    }
+
+    .logo-box p{
+
+        font-size:14px;
+
+    }
+
+}
