@@ -1,0 +1,580 @@
+/*====================================
+      DOM ELEMENTS
+====================================*/
+
+const userModal = document.getElementById("userModal");
+const deleteModal = document.getElementById("deleteModal");
+
+const openModalBtn = document.getElementById("openModal");
+const closeModalBtn = document.getElementById("closeModal");
+const cancelModalBtn = document.getElementById("cancelModal");
+
+const cancelDeleteBtn = document.getElementById("cancelDelete");
+
+const form = document.getElementById("userForm");
+
+const toast = document.getElementById("toast");
+
+/*====================================
+      OPEN MODAL
+====================================*/
+
+openModalBtn.addEventListener("click", () => {
+
+    clearForm();
+
+    userModal.classList.add("active");
+
+});
+
+/*====================================
+      CLOSE MODAL
+====================================*/
+
+function closeModal(){
+
+    userModal.classList.remove("active");
+
+}
+
+closeModalBtn.addEventListener("click", closeModal);
+
+cancelModalBtn.addEventListener("click", closeModal);
+
+/*====================================
+      CLOSE DELETE MODAL
+====================================*/
+
+cancelDeleteBtn.addEventListener("click", ()=>{
+
+    deleteModal.classList.remove("active");
+
+});
+
+/*====================================
+ CLICK OUTSIDE TO CLOSE
+====================================*/
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target===userModal){
+
+        closeModal();
+
+    }
+
+    if(e.target===deleteModal){
+
+        deleteModal.classList.remove("active");
+
+    }
+
+});
+
+/*====================================
+      INPUT FIELDS
+====================================*/
+
+const fullName=document.getElementById("fullName");
+const email=document.getElementById("email");
+const department=document.getElementById("department");
+const role=document.getElementById("role");
+const password=document.getElementById("password");
+const confirmPassword=document.getElementById("confirmPassword");
+
+/*====================================
+      ERROR FIELDS
+====================================*/
+
+const nameError=document.getElementById("nameError");
+const emailError=document.getElementById("emailError");
+const departmentError=document.getElementById("departmentError");
+const roleError=document.getElementById("roleError");
+const passwordError=document.getElementById("passwordError");
+const confirmPasswordError=document.getElementById("confirmPasswordError");
+
+/*====================================
+      CLEAR FORM
+====================================*/
+
+function clearForm(){
+
+    form.reset();
+
+    clearErrors();
+
+}
+
+/*====================================
+      CLEAR ERRORS
+====================================*/
+
+function clearErrors(){
+
+    nameError.textContent="";
+    emailError.textContent="";
+    departmentError.textContent="";
+    roleError.textContent="";
+    passwordError.textContent="";
+    confirmPasswordError.textContent="";
+
+}
+
+/*====================================
+      EMAIL VALIDATION
+====================================*/
+
+function validEmail(email){
+
+    const regex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return regex.test(email);
+
+}
+
+/*====================================
+      FORM VALIDATION
+====================================*/
+
+function validateForm(){
+
+    clearErrors();
+
+    let valid=true;
+
+    /* Name */
+
+    if(fullName.value.trim()===""){
+
+        nameError.textContent="Full name is required.";
+
+        valid=false;
+
+    }
+
+    /* Email */
+
+    if(email.value.trim()===""){
+
+        emailError.textContent="Email is required.";
+
+        valid=false;
+
+    }
+
+    else if(!validEmail(email.value.trim())){
+
+        emailError.textContent="Invalid email address.";
+
+        valid=false;
+
+    }
+
+    /* Department */
+
+    if(department.value===""){
+
+        departmentError.textContent="Select a department.";
+
+        valid=false;
+
+    }
+
+    /* Role */
+
+    if(role.value===""){
+
+        roleError.textContent="Select a role.";
+
+        valid=false;
+
+    }
+
+    /* Password */
+
+    if(password.value.length<6){
+
+        passwordError.textContent="Minimum 6 characters.";
+
+        valid=false;
+
+    }
+
+    /* Confirm Password */
+
+    if(confirmPassword.value!==password.value){
+
+        confirmPasswordError.textContent="Passwords do not match.";
+
+        valid=false;
+
+    }
+
+    return valid;
+
+}
+/*====================================
+        USER DATA
+====================================*/
+
+let users = [];
+
+let userCount = 5;
+
+/*====================================
+        CREATE USER ID
+====================================*/
+
+function generateUserId(){
+
+    return "USR" + String(userCount++).padStart(3,"0");
+
+}
+
+/*====================================
+      RENDER TABLE
+====================================*/
+
+function renderTable(){
+
+    const tableBody = document.getElementById("tableBody");
+
+    tableBody.innerHTML="";
+
+    users.forEach((user,index)=>{
+
+        tableBody.innerHTML += `
+
+        <tr>
+
+            <td>${user.id}</td>
+
+            <td>
+
+                <div class="user-info">
+
+                    <img src="https://i.pravatar.cc/40?img=${index+10}">
+
+                    <div>
+
+                        <h4>${user.name}</h4>
+
+                        <span>Employee</span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+            <td>${user.email}</td>
+
+            <td>${user.department}</td>
+
+            <td>${user.role}</td>
+
+            <td>
+
+                <span class="status ${user.status.toLowerCase()}">
+
+                    ${user.status}
+
+                </span>
+
+            </td>
+
+            <td>${user.date}</td>
+
+            <td>
+
+                <button class="table-btn edit">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+                <button class="table-btn delete">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+/*====================================
+        ADD USER
+====================================*/
+
+form.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    if(!validateForm()){
+
+        return;
+
+    }
+
+    const today = new Date();
+
+    const options = {
+
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+
+    };
+
+    const newUser = {
+
+        id:generateUserId(),
+
+        name:fullName.value,
+
+        email:email.value,
+
+        department:department.value,
+
+        role:role.value,
+
+        status:document.getElementById("status").value,
+
+        date:today.toLocaleDateString("en-GB",options)
+
+    };
+
+    users.push(newUser);
+
+    renderTable();
+
+    closeModal();
+
+    clearForm();
+
+    showToast();
+
+});
+
+/*====================================
+        TOAST MESSAGE
+====================================*/
+
+function showToast(){
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },3000);
+
+}
+/*====================================
+        SEARCH USERS
+====================================*/
+
+const tableSearch = document.getElementById("tableSearch");
+
+tableSearch.addEventListener("keyup", function () {
+
+    const value = this.value.toLowerCase();
+
+    const rows = document.querySelectorAll("#tableBody tr");
+
+    rows.forEach(row => {
+
+        row.style.display = row.innerText.toLowerCase().includes(value)
+            ? ""
+            : "none";
+
+    });
+
+});
+
+
+/*====================================
+        DELETE USER
+====================================*/
+
+let deleteIndex = null;
+
+document.addEventListener("click", function (e) {
+
+    const deleteBtn = e.target.closest(".delete");
+
+    if (!deleteBtn) return;
+
+    const row = deleteBtn.closest("tr");
+
+    deleteIndex = row.rowIndex - 1;
+
+    deleteModal.classList.add("active");
+
+});
+
+
+/*====================================
+      CONFIRM DELETE
+====================================*/
+
+const confirmDeleteBtn = document.getElementById("confirmDelete");
+
+confirmDeleteBtn.addEventListener("click", function () {
+
+    if (deleteIndex !== null) {
+
+        users.splice(deleteIndex, 1);
+
+        renderTable();
+
+        deleteIndex = null;
+
+        deleteModal.classList.remove("active");
+
+        showToastMessage("User deleted successfully!");
+
+    }
+
+});
+
+
+/*====================================
+          EDIT USER
+====================================*/
+
+let editIndex = null;
+
+document.addEventListener("click", function (e) {
+
+    const editBtn = e.target.closest(".edit");
+
+    if (!editBtn) return;
+
+    const row = editBtn.closest("tr");
+
+    editIndex = row.rowIndex - 1;
+
+    const user = users[editIndex];
+
+    if (!user) return;
+
+    fullName.value = user.name;
+    email.value = user.email;
+    department.value = user.department;
+    role.value = user.role;
+    document.getElementById("status").value = user.status;
+
+    password.value = "";
+    confirmPassword.value = "";
+
+    userModal.classList.add("active");
+
+});
+
+
+/*====================================
+      UPDATE EXISTING USER
+====================================*/
+
+form.addEventListener("submit", function () {
+
+    if (editIndex === null) return;
+
+    users[editIndex].name = fullName.value;
+    users[editIndex].email = email.value;
+    users[editIndex].department = department.value;
+    users[editIndex].role = role.value;
+    users[editIndex].status = document.getElementById("status").value;
+
+    renderTable();
+
+    closeModal();
+
+    showToastMessage("User updated successfully!");
+
+    editIndex = null;
+
+});
+
+
+/*====================================
+        CUSTOM TOAST
+====================================*/
+
+function showToastMessage(message) {
+
+    toast.querySelector("span").textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+/*====================================
+      INITIAL SAMPLE DATA
+====================================*/
+
+users = [
+
+    {
+        id: "USR001",
+        name: "John Doe",
+        email: "john@procuresys.com",
+        department: "Procurement",
+        role: "Manager",
+        status: "Active",
+        date: "12 May 2026"
+    },
+
+    {
+        id: "USR002",
+        name: "Sophia Miller",
+        email: "sophia@procuresys.com",
+        department: "Finance",
+        role: "Executive",
+        status: "Pending",
+        date: "08 May 2026"
+    },
+
+    {
+        id: "USR003",
+        name: "David Johnson",
+        email: "david@vendor.com",
+        department: "Vendor",
+        role: "Supplier",
+        status: "Inactive",
+        date: "02 May 2026"
+    },
+
+    {
+        id: "USR004",
+        name: "Emma Wilson",
+        email: "emma@procuresys.com",
+        department: "Inventory",
+        role: "Coordinator",
+        status: "Active",
+        date: "29 Apr 2026"
+    }
+
+];
+
+/*====================================
+      LOAD TABLE
+====================================*/
+
+renderTable();
