@@ -1,0 +1,475 @@
+Create a pixel-perfect premium SaaS Procurement & Sourcing Dashboard UI. 
+
+Design Style: 
+
+- Identical quality to Stripe Dashboard, Linear, HubSpot, Monday.com, and modern Fintech Admin Panels. 
+
+- Enterprise-grade B2B software design. 
+
+- Clean, modern, minimalistic. 
+
+- Desktop-first layout. 
+
+- Full viewport height. 
+
+- Professional analytics dashboard. 
+
+- Soft shadows and glass-like card aesthetics. 
+
+- High information density. 
+
+- Perfect alignment and spacing. 
+
+ 
+
+Layout Structure: 
+
+ 
+
+LEFT SIDEBAR: 
+
+- Fixed sidebar width 250px. 
+
+- Background #111827. 
+
+- Full height. 
+
+- Logo section at top. 
+
+- Logo icon inside rounded square. 
+
+- Product Name: "PROCURESYS". 
+
+- Subtitle: "Procurement Platform". 
+
+ 
+
+ 
+
+Sidebar Menu: 
+
+- Dashboard 
+
+- Vendor History 
+
+- RFQ Management 
+
+- Penalty Module 
+
+- Inventory Dashboard 
+
+- Vendor Performance 
+
+- SLA Monitoring 
+
+- Analytics 
+
+- Reports 
+
+ 
+
+Help Section: 
+
+- Help Center 
+
+- Settings 
+
+ 
+
+Bottom: 
+
+- Logout Button 
+
+ 
+
+Active Menu: 
+
+- White rounded card background. 
+
+- Dark text. 
+
+- Blue left accent border. 
+
+ 
+
+Inactive Menu: 
+
+- #A1A1AA 
+
+- Hover animation. 
+
+ 
+
+TOP HEADER: 
+
+- Fixed horizontal header. 
+
+ 
+
+- Left: 
+
+Welcome Back 
+
+Procurement Overview 
+
+ 
+
+- Right: 
+
+Rounded search bar 
+
+Notification icon 
+
+Message icon 
+
+User avatar 
+
+Username 
+
+ 
+
+Header Background: 
+
+- Transparent 
+
+ 
+
+CONTENT AREA: 
+
+ 
+
+Background: 
+
+#F7F8FC 
+
+ 
+
+KPI SECTION: 
+
+4 equally sized cards in one row. 
+
+ 
+
+Card Radius: 
+
+12px 
+
+Card Shadow: 
+
+0px 4px 12px rgba(0,0,0,0.06) 
+
+ 
+
+Card Height: 
+
+130px 
+
+KPIs: 
+
+- Total Vendors 
+
+- Active RFQs 
+
+- Pending Invoices 
+
+- Inventory Value 
+
+ 
+
+Each Card: 
+
+- Colored indicator line 
+
+- Title 
+
+- Large number 
+
+- Percentage change 
+
+- Trend icon 
+
+ 
+
+CARD COLORS: 
+
+Blue #5B6EF5 
+
+Green #10B981 
+
+Purple #8B5CF6 
+
+Indigo #6366F1 
+
+ 
+
+ANALYTICS SECTION: 
+
+Two-column layout. 
+
+LEFT CARD: 
+
+Inventory Statistics 
+
+ 
+
+Large modern donut chart. 
+
+Center: 
+
+Total Inventory 
+
+ 
+
+Legend: 
+
+- Available Stock 
+
+- Low Stock 
+
+- Critical Stock 
+
+ 
+
+RIGHT CARD: 
+
+Procurement Analytics 
+
+ 
+
+Professional line chart. 
+
+ 
+
+Features: 
+
+- Smooth curved line 
+
+- Purple-blue gradient 
+
+- Hover points 
+
+- Monthly labels Jan-Dec 
+
+- Grid lines 
+
+ 
+
+TABLE SECTION: 
+
+Large card below charts. 
+
+ 
+
+Title: 
+
+Recent Procurement Activities 
+
+ 
+
+Actions: 
+
+Filter Button 
+
+Export Button 
+
+Three Dot Menu 
+
+ 
+
+ 
+
+Table Columns: 
+
+- ID 
+
+- Vendor 
+
+- RFQ 
+
+- Category 
+
+- Date 
+
+- Status 
+
+- Amount 
+
+ 
+
+STATUS PILLS: 
+
+ 
+
+Approved: 
+
+Background #DCFCE7 
+
+Text #16A34A 
+
+ 
+
+Pending: 
+
+Background #FEF3C7 
+
+Text #D97706 
+
+ 
+
+Rejected: 
+
+Background #FEE2E2 
+
+Text #DC2626 
+
+ 
+
+Completed: 
+
+Background #DBEAFE 
+
+Text #2563EB 
+
+ 
+
+TABLE STYLE: 
+
+- Modern enterprise grid 
+
+- Hover rows 
+
+- Rounded corners 
+
+- Thin borders 
+
+- Alternate row highlight 
+
+ 
+
+ 
+
+TYPOGRAPHY: 
+
+Font Family: 
+
+Inter 
+
+ 
+
+Page Title: 
+
+32px 
+
+700 
+
+ 
+
+Card Heading: 
+
+14px 
+
+500 
+
+ 
+
+Card Numbers: 
+
+38px 
+
+700 
+
+ 
+
+Menu Labels: 
+
+14px 
+
+500 
+
+ 
+
+Table Text: 
+
+13px 
+
+ 
+
+COLORS: 
+
+Sidebar: 
+
+#111827 
+
+ 
+
+Content: 
+
+#F7F8FC 
+
+ 
+
+ 
+
+Cards: 
+
+#FFFFFF 
+
+ 
+
+Border: 
+
+#E5E7EB 
+
+ 
+
+Primary: 
+
+#5B6EF5 
+
+ 
+
+Secondary: 
+
+#6D5EF6 
+
+ 
+
+Success: 
+
+#10B981 
+
+ 
+
+Warning: 
+
+#F59E0B 
+
+ 
+
+Danger: 
+
+#EF4444 
+
+ 
+
+INTERACTIONS: 
+
+- Smooth 0.2s transitions 
+
+- Card hover elevation 
+
+- Sidebar hover effect 
+
+- Search glow on focus 
+
+- Table row hover 
+
+- Button animations 
+
+ 
+
+RESULT: 
+
+Create a premium modern Procurement & Sourcing SaaS dashboard that looks exactly like a professionally designed Dribbble/Figma enterprise admin template, with dark sidebar, KPI cards, donut analytics, line chart analytics, and modern data table. 
+
+ 
