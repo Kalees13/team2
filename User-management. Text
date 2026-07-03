@@ -272,3 +272,582 @@
             <!-- ================= USER TABLE STARTS HERE ================= -->
 
             <!-- Part 1B continues from here -->
+<!-- ================= USER MANAGEMENT CARD ================= -->
+
+<div class="table-card">
+
+    <!-- Card Header -->
+
+    <div class="card-header">
+
+        <div>
+            <h2>User Directory</h2>
+            <p>Manage all employees, customers and suppliers</p>
+        </div>
+
+        <div class="card-actions">
+
+            <button class="export-btn">
+                <i class="fa-solid fa-download"></i>
+                Export
+            </button>
+
+            <button class="more-btn">
+                <i class="fa-solid fa-ellipsis"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Table -->
+
+    <div class="table-responsive">
+
+        <table id="userTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Department</th>
+
+                    <th>Role</th>
+
+                    <th>Status</th>
+
+                    <th>Created</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tableBody">
+
+                <tr>
+
+                    <td>USR001</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=12">
+
+                            <div>
+
+                                <h4>John Doe</h4>
+
+                                <span>Employee</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>john@procuresys.com</td>
+
+                    <td>Procurement</td>
+
+                    <td>Manager</td>
+
+                    <td>
+                        <span class="status active">
+                            Active
+                        </span>
+                    </td>
+
+                    <td>12 May 2026</td>
+
+                    <td>
+
+                        <button class="table-btn edit">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </button>
+
+                        <button class="table-btn delete">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>USR002</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=20">
+
+                            <div>
+
+                                <h4>Sophia Miller</h4>
+
+                                <span>Employee</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>sophia@procuresys.com</td>
+
+                    <td>Finance</td>
+
+                    <td>Executive</td>
+
+                    <td>
+
+                        <span class="status pending">
+
+                            Pending
+
+                        </span>
+
+                    </td>
+
+                    <td>08 May 2026</td>
+
+                    <td>
+
+                        <button class="table-btn edit">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </button>
+
+                        <button class="table-btn delete">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>USR003</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=5">
+
+                            <div>
+
+                                <h4>David Johnson</h4>
+
+                                <span>Supplier</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>david@vendor.com</td>
+
+                    <td>Vendor</td>
+
+                    <td>Supplier</td>
+
+                    <td>
+
+                        <span class="status inactive">
+
+                            Inactive
+
+                        </span>
+
+                    </td>
+
+                    <td>02 May 2026</td>
+
+                    <td>
+
+                        <button class="table-btn edit">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </button>
+
+                        <button class="table-btn delete">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+
+                    <td>USR004</td>
+
+                    <td>
+
+                        <div class="user-info">
+
+                            <img src="https://i.pravatar.cc/40?img=33">
+
+                            <div>
+
+                                <h4>Emma Wilson</h4>
+
+                                <span>Employee</span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>emma@procuresys.com</td>
+
+                    <td>Inventory</td>
+
+                    <td>Coordinator</td>
+
+                    <td>
+
+                        <span class="status active">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                    <td>29 Apr 2026</td>
+
+                    <td>
+
+                        <button class="table-btn edit">
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </button>
+
+                        <button class="table-btn delete">
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- Pagination -->
+
+    <div class="table-footer">
+
+        <div class="entries">
+
+            Showing <strong>1-4</strong> of
+            <strong>124</strong> Users
+
+        </div>
+
+        <div class="pagination">
+
+            <button>
+
+                <i class="fa-solid fa-angle-left"></i>
+
+            </button>
+
+            <button class="active-page">
+
+                1
+
+            </button>
+
+            <button>2</button>
+
+            <button>3</button>
+
+            <button>4</button>
+
+            <button>
+
+                <i class="fa-solid fa-angle-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= END OF USER TABLE ================= --><!-- ================= ADD USER MODAL ================= -->
+
+<div class="modal" id="userModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Add New User</h2>
+
+            <button class="close-btn" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+        <form id="userForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter full name">
+
+                    <small class="error" id="nameError"></small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email">
+
+                    <small class="error" id="emailError"></small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Department</label>
+
+                    <select id="department">
+
+                        <option value="">Select Department</option>
+
+                        <option>Procurement</option>
+
+                        <option>Finance</option>
+
+                        <option>Inventory</option>
+
+                        <option>Vendor</option>
+
+                        <option>Administration</option>
+
+                    </select>
+
+                    <small class="error" id="departmentError"></small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Role</label>
+
+                    <select id="role">
+
+                        <option value="">Select Role</option>
+
+                        <option>Administrator</option>
+
+                        <option>Manager</option>
+
+                        <option>Executive</option>
+
+                        <option>Coordinator</option>
+
+                        <option>Supplier</option>
+
+                    </select>
+
+                    <small class="error" id="roleError"></small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password">
+
+                    <small class="error" id="passwordError"></small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Confirm Password</label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password">
+
+                    <small class="error" id="confirmPasswordError"></small>
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                        <option>Active</option>
+
+                        <option>Inactive</option>
+
+                        <option>Pending</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelModal">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    Save User
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= DELETE MODAL ================= -->
+
+<div class="delete-modal" id="deleteModal">
+
+    <div class="delete-box">
+
+        <i class="fa-solid fa-circle-exclamation warning-icon"></i>
+
+        <h2>Delete User?</h2>
+
+        <p>
+
+            Are you sure you want to delete this user?
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="delete-actions">
+
+            <button
+                class="cancel-delete"
+                id="cancelDelete">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="confirm-delete"
+                id="confirmDelete">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= SUCCESS TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span>User saved successfully.</span>
+
+</div>
+
+
+
+</section>
+
+</main>
+
+
+
+<!-- JavaScript -->
+
+<script src="user-management.js"></script>
+
+</body>
+
+</html>
