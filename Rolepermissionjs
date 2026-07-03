@@ -1,0 +1,671 @@
+/*==================================================
+  ROLE PERMISSION MANAGEMENT - PART 1
+==================================================*/
+
+/* ---------- DOM ELEMENTS ---------- */
+
+const roleTableBody = document.querySelector("#roleTable tbody");
+
+const searchInput = document.querySelector(".search-box input");
+
+const addRoleBtn = document.querySelector(".add-btn");
+
+const refreshBtn = document.querySelector(".refresh-btn");
+
+const roleModal = document.getElementById("roleModal");
+
+const roleForm = document.getElementById("roleForm");
+
+const closeBtn = document.querySelector(".close-btn");
+
+const cancelBtn = document.querySelector(".cancel-btn");
+
+const toast = document.getElementById("toast");
+
+/* ---------- SAMPLE ROLE DATA ---------- */
+
+let roles = [
+
+{
+    id:"ROL001",
+    name:"Administrator",
+    description:"Full system access",
+    users:5,
+    permissions:36,
+    status:"Active",
+    date:"12 Jan 2026"
+},
+
+{
+    id:"ROL002",
+    name:"Procurement Manager",
+    description:"Vendor & RFQ Management",
+    users:12,
+    permissions:28,
+    status:"Active",
+    date:"18 Jan 2026"
+},
+
+{
+    id:"ROL003",
+    name:"Inventory Officer",
+    description:"Inventory Management",
+    users:18,
+    permissions:18,
+    status:"Active",
+    date:"26 Jan 2026"
+},
+
+{
+    id:"ROL004",
+    name:"Supplier",
+    description:"Supplier Portal Access",
+    users:72,
+    permissions:10,
+    status:"Inactive",
+    date:"05 Feb 2026"
+},
+
+{
+    id:"ROL005",
+    name:"Finance Executive",
+    description:"Invoice & Payment Approval",
+    users:9,
+    permissions:20,
+    status:"Active",
+    date:"14 Feb 2026"
+}
+
+];
+
+/* ---------- RENDER ROLE TABLE ---------- */
+
+function renderTable(data = roles){
+
+    roleTableBody.innerHTML = "";
+
+    data.forEach((role,index)=>{
+
+        const statusClass =
+        role.status === "Active"
+        ? "active"
+        : "inactive";
+
+        roleTableBody.innerHTML += `
+
+<tr>
+
+<td>${role.id}</td>
+
+<td>
+
+<div class="role-info">
+
+<div class="role-icon admin">
+
+<i class="fa-solid fa-user-shield"></i>
+
+</div>
+
+<div>
+
+<h4>${role.name}</h4>
+
+<span>${role.description}</span>
+
+</div>
+
+</div>
+
+</td>
+
+<td>${role.description}</td>
+
+<td>${role.users}</td>
+
+<td>${role.permissions}</td>
+
+<td>
+
+<span class="status ${statusClass}">
+
+${role.status}
+
+</span>
+
+</td>
+
+<td>${role.date}</td>
+
+<td>
+
+<div class="action-buttons">
+
+<button
+class="view-btn"
+data-index="${index}">
+
+<i class="fa-solid fa-eye"></i>
+
+</button>
+
+<button
+class="edit-btn"
+data-index="${index}">
+
+<i class="fa-solid fa-pen"></i>
+
+</button>
+
+<button
+class="delete-btn"
+data-index="${index}">
+
+<i class="fa-solid fa-trash"></i>
+
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+    });
+
+}
+
+/* ---------- INITIAL LOAD ---------- */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    renderTable();
+
+});
+/*==================================================
+  ROLE PERMISSION MANAGEMENT - PART 2
+==================================================*/
+
+let editIndex = -1;
+
+/* ---------- SEARCH ---------- */
+
+searchInput.addEventListener("keyup", function () {
+
+    const keyword = this.value.toLowerCase();
+
+    const filtered = roles.filter(role =>
+
+        role.id.toLowerCase().includes(keyword) ||
+
+        role.name.toLowerCase().includes(keyword) ||
+
+        role.description.toLowerCase().includes(keyword) ||
+
+        role.status.toLowerCase().includes(keyword)
+
+    );
+
+    renderTable(filtered);
+
+});
+
+/* ---------- OPEN ADD ROLE MODAL ---------- */
+
+addRoleBtn.addEventListener("click", () => {
+
+    editIndex = -1;
+
+    roleForm.reset();
+
+    document.querySelector(".modal-header h2").textContent = "Add New Role";
+
+    roleModal.classList.add("active");
+
+});
+
+/* ---------- CLOSE MODAL ---------- */
+
+function closeModal(){
+
+    roleModal.classList.remove("active");
+
+}
+
+closeBtn.addEventListener("click", closeModal);
+
+cancelBtn.addEventListener("click", closeModal);
+
+/* ---------- EDIT ROLE ---------- */
+
+document.addEventListener("click", function(e){
+
+    const btn = e.target.closest(".edit-btn");
+
+    if(!btn) return;
+
+    editIndex = Number(btn.dataset.index);
+
+    const role = roles[editIndex];
+
+    const inputs = roleForm.querySelectorAll("input, textarea, select");
+
+    inputs[0].value = role.name;
+    inputs[1].value = role.description;
+    inputs[2].value = role.status;
+
+    document.querySelector(".modal-header h2").textContent = "Edit Role";
+
+    roleModal.classList.add("active");
+
+});
+
+/* ---------- SAVE ROLE ---------- */
+
+roleForm.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const inputs = roleForm.querySelectorAll("input, textarea, select");
+
+    const roleName = inputs[0].value.trim();
+
+    const description = inputs[1].value.trim();
+
+    const status = inputs[2].value;
+
+    if(roleName === ""){
+
+        alert("Role name is required.");
+
+        return;
+
+    }
+
+    if(editIndex === -1){
+
+        roles.push({
+
+            id:"ROL00" + (roles.length + 1),
+
+            name:roleName,
+
+            description:description,
+
+            users:0,
+
+            permissions:0,
+
+            status:status,
+
+            date:new Date().toLocaleDateString()
+
+        });
+
+        showToast("Role added successfully.");
+
+    }else{
+
+        roles[editIndex].name = roleName;
+
+        roles[editIndex].description = description;
+
+        roles[editIndex].status = status;
+
+        showToast("Role updated successfully.");
+
+    }
+
+    renderTable();
+
+    closeModal();
+
+});
+/*==================================================
+  ROLE PERMISSION MANAGEMENT - PART 3
+==================================================*/
+
+/* ---------- DELETE MODAL ---------- */
+
+const deleteModal = document.getElementById("deleteModal");
+
+const cancelDelete = document.querySelector(".cancel-delete");
+
+const confirmDelete = document.querySelector(".confirm-delete");
+
+const filterBtn = document.querySelector(".filter-btn");
+
+let deleteIndex = -1;
+
+
+/* ---------- DELETE BUTTON ---------- */
+
+document.addEventListener("click", function(e){
+
+    const btn = e.target.closest(".delete-btn");
+
+    if(!btn) return;
+
+    deleteIndex = Number(btn.dataset.index);
+
+    deleteModal.classList.add("active");
+
+});
+
+
+/* ---------- CANCEL DELETE ---------- */
+
+cancelDelete.addEventListener("click",()=>{
+
+    deleteModal.classList.remove("active");
+
+    deleteIndex = -1;
+
+});
+
+
+/* ---------- CONFIRM DELETE ---------- */
+
+confirmDelete.addEventListener("click",()=>{
+
+    if(deleteIndex>-1){
+
+        roles.splice(deleteIndex,1);
+
+        renderTable();
+
+        showToast("Role deleted successfully.");
+
+    }
+
+    deleteModal.classList.remove("active");
+
+    deleteIndex = -1;
+
+});
+
+
+/* ---------- REFRESH BUTTON ---------- */
+
+refreshBtn.addEventListener("click",()=>{
+
+    searchInput.value="";
+
+    renderTable();
+
+    showToast("Role list refreshed.");
+
+});
+
+
+/* ---------- FILTER BUTTON ---------- */
+
+filterBtn.addEventListener("click",()=>{
+
+    const activeRoles = roles.filter(role=>role.status==="Active");
+
+    renderTable(activeRoles);
+
+    showToast("Showing active roles only.");
+
+});
+
+
+/* ---------- VIEW BUTTON ---------- */
+
+document.addEventListener("click",function(e){
+
+    const btn = e.target.closest(".view-btn");
+
+    if(!btn) return;
+
+    const index = Number(btn.dataset.index);
+
+    const role = roles[index];
+
+    alert(
+
+`Role ID : ${role.id}
+
+Role Name : ${role.name}
+
+Description : ${role.description}
+
+Assigned Users : ${role.users}
+
+Permissions : ${role.permissions}
+
+Status : ${role.status}
+
+Created Date : ${role.date}`
+
+    );
+
+});
+
+
+/* ---------- TOAST FUNCTION ---------- */
+
+function showToast(message){
+
+    toast.querySelector("span").textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },3000);
+
+}
+
+
+/* ---------- CLOSE MODALS ON OUTSIDE CLICK ---------- */
+
+window.addEventListener("click",(e)=>{
+
+    if(e.target===roleModal){
+
+        closeModal();
+
+    }
+
+    if(e.target===deleteModal){
+
+        deleteModal.classList.remove("active");
+
+    }
+
+});
+/*==================================================
+  ROLE PERMISSION MANAGEMENT - PART 4
+==================================================*/
+
+/* ---------- PAGINATION ---------- */
+
+let currentPage = 1;
+const rowsPerPage = 5;
+
+function renderPagination(data = roles){
+
+    const totalPages = Math.ceil(data.length / rowsPerPage);
+
+    const pagination = document.querySelector(".pagination");
+
+    pagination.innerHTML = "";
+
+    // Previous Button
+    const prevBtn = document.createElement("button");
+    prevBtn.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
+
+    prevBtn.disabled = currentPage === 1;
+
+    prevBtn.addEventListener("click", () => {
+
+        if(currentPage > 1){
+
+            currentPage--;
+
+            renderPagination(data);
+            renderCurrentPage(data);
+
+        }
+
+    });
+
+    pagination.appendChild(prevBtn);
+
+    // Page Numbers
+    for(let i=1;i<=totalPages;i++){
+
+        const btn = document.createElement("button");
+
+        btn.textContent = i;
+
+        if(i===currentPage){
+
+            btn.classList.add("active-page");
+
+        }
+
+        btn.addEventListener("click",()=>{
+
+            currentPage=i;
+
+            renderPagination(data);
+
+            renderCurrentPage(data);
+
+        });
+
+        pagination.appendChild(btn);
+
+    }
+
+    // Next Button
+    const nextBtn = document.createElement("button");
+
+    nextBtn.innerHTML='<i class="fa-solid fa-angle-right"></i>';
+
+    nextBtn.disabled=currentPage===totalPages;
+
+    nextBtn.addEventListener("click",()=>{
+
+        if(currentPage<totalPages){
+
+            currentPage++;
+
+            renderPagination(data);
+
+            renderCurrentPage(data);
+
+        }
+
+    });
+
+    pagination.appendChild(nextBtn);
+
+}
+
+/* ---------- CURRENT PAGE ---------- */
+
+function renderCurrentPage(data = roles){
+
+    const start = (currentPage-1) * rowsPerPage;
+
+    const end = start + rowsPerPage;
+
+    renderTable(data.slice(start,end));
+
+}
+
+/* ---------- EXPORT CSV ---------- */
+
+function exportCSV(){
+
+    let csv = "Role ID,Role Name,Description,Users,Permissions,Status,Created Date\n";
+
+    roles.forEach(role=>{
+
+        csv += `${role.id},${role.name},${role.description},${role.users},${role.permissions},${role.status},${role.date}\n`;
+
+    });
+
+    const blob = new Blob([csv],{
+
+        type:"text/csv"
+
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href=url;
+
+    a.download="Role_Permission_Report.csv";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    showToast("CSV exported successfully.");
+
+}
+
+/* ---------- EXPORT BUTTON ---------- */
+
+const moreBtn=document.querySelector(".more-btn");
+
+if(moreBtn){
+
+    moreBtn.addEventListener("click",exportCSV);
+
+}
+
+/* ---------- ESC KEY ---------- */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        roleModal.classList.remove("active");
+
+        deleteModal.classList.remove("active");
+
+    }
+
+});
+
+/* ---------- INITIALIZATION ---------- */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    renderCurrentPage();
+
+    renderPagination();
+
+});
+
+/* ---------- AUTO UPDATE KPI (Demo) ---------- */
+
+setInterval(()=>{
+
+    const numbers=document.querySelectorAll(".kpi-card h2");
+
+    if(numbers.length>=4){
+
+        numbers[0].textContent=roles.length;
+
+        numbers[1].textContent=240+Math.floor(Math.random()*15);
+
+        numbers[2].textContent=36;
+
+        numbers[3].textContent=roles.filter(r=>r.status==="Active").length;
+
+    }
+
+},5000);
